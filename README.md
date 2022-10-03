@@ -1,1 +1,1 @@
-# todo-list-code-review
+## This repo is for Peer-to-Peer Code Review purpose only
