@@ -2,8 +2,8 @@
 
 const deleteInStorage = (element) => {
   let tasks;
-  if (localStorage.getItem("tasks") !== null && localStorage.getItem("tasks") !== "[]") {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
+  if (localStorage.getItem('tasks') !== null && localStorage.getItem('tasks') !== '[]') {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
   }
   const itemToDelete = element.children[0].children[0].children[1].innerText;
   const index = tasks.map((task) => task.desc).indexOf(itemToDelete);
@@ -14,7 +14,7 @@ const deleteInStorage = (element) => {
     count += 1;
   });
 
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
 export default deleteInStorage;
