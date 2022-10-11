@@ -1,20 +1,20 @@
-import { todoList, checkboxes } from './selectors.js';
+import { todoList, checkboxes } from "./selectors.js";
 
 let tasks;
-function checkState() {
-  todoList.addEventListener('click', (e) => {
+const checkState = () => {
+  todoList.addEventListener("click", (e) => {
     if (
-      localStorage.getItem('tasks') !== null
-      && localStorage.getItem('tasks') !== '[]'
+      localStorage.getItem("tasks") !== null &&
+      localStorage.getItem("tasks") !== "[]"
     ) {
-      tasks = JSON.parse(localStorage.getItem('tasks'));
+      tasks = JSON.parse(localStorage.getItem("tasks"));
     }
-    if (e.target.nodeName === 'INPUT') {
+    if (e.target.nodeName === "INPUT") {
       const element = e.target;
       const item = element.parentElement.innerText;
 
       if (element.checked) {
-        element.parentElement.classList.add('completed');
+        element.parentElement.classList.add("completed");
 
         const editedArr = tasks.map((task) => {
           if (task.desc === item) {
@@ -23,9 +23,9 @@ function checkState() {
           }
           return task;
         });
-        localStorage.setItem('tasks', JSON.stringify(editedArr));
+        localStorage.setItem("tasks", JSON.stringify(editedArr));
       } else {
-        element.parentElement.classList.remove('completed');
+        element.parentElement.classList.remove("completed");
 
         const editedArr = tasks.map((task) => {
           if (task.desc === item) {
@@ -34,18 +34,18 @@ function checkState() {
           }
           return task;
         });
-        localStorage.setItem('tasks', JSON.stringify(editedArr));
+        localStorage.setItem("tasks", JSON.stringify(editedArr));
       }
     }
   });
-}
+};
 
 // check if checkbox is checked on load then style the checked task
 function checkOnLoad() {
   const arrChecks = [...checkboxes];
   arrChecks.forEach((check) => {
-    if (check.hasAttribute('checked')) {
-      check.parentElement.classList.add('completed');
+    if (check.hasAttribute("checked")) {
+      check.parentElement.classList.add("completed");
     }
   });
 }
